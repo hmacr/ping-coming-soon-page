@@ -1,0 +1,132 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <link
+      rel="stylesheet"
+      href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="./output.css"
+    />
+
+    <title>Frontend Mentor | Ping coming soon page</title>
+
+    <script>
+      function formHandler() {
+        const re = /\S+@\S+\.\S+/;
+        const email_error_elem = document.getElementById('email_error');
+        console.log(email_error_elem);
+        const email_elem = document.forms['notify_form']['email'];
+        const email = email_elem.value;
+        const is_email_valid = re.test(email);
+
+        if (!is_email_valid) {
+          email_elem.classList.remove('border-[0.5px]', 'border-gray');
+          email_elem.classList.add('border-[1px]', 'border-light-red');
+          email_error_elem.classList.remove('invisible');
+          email_error_elem.classList.add('visible');
+        } else {
+          email_elem.classList.add('border-[0.5px]', 'border-gray');
+          email_elem.classList.remove('border-[1px]', 'border-light-red');
+          email_error_elem.classList.add('invisible');
+          email_error_elem.classList.remove('visible');
+        }
+        return is_email_valid;
+      }
+    </script>
+  </head>
+  <body class="font-libre-franklin">
+    <!-- Container -->
+    <div class="max-w-screen-xl mx-auto">
+      <!-- Main -->
+      <div class="mt-16 p-6">
+        <!-- Logo -->
+        <div class="text-center">
+          <a href="#"
+            ><img
+              src="./images/logo.svg"
+              alt="logo"
+              class="inline-block"
+          /></a>
+        </div>
+        <!-- Info -->
+        <div class="text-center mt-10 p-4">
+          <h1 class="text-5xl text-gray font-light">
+            We are launching <span class="font-bold text-dark-blue">soon!</span>
+          </h1>
+          <p class="mt-6 text-xl text-dark-blue">Subscribe and get notified</p>
+        </div>
+        <!-- Notify Section -->
+        <div class="relative text-center mt-6">
+          <form
+            name="notify_form"
+            action="#"
+            onsubmit="return formHandler()"
+            novalidate
+          >
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Your email address..."
+              class="px-6 py-3 w-[350px] border-[0.5px] border-gray rounded-3xl outline-0 shadow-lg mr-2"
+            />
+            <input
+              type="submit"
+              value="Notify Me"
+              class="ml-2 px-6 py-3 w-[150px] bg-blue rounded-3xl text-white text-sm font-semibold shadow-lg hover:cursor-pointer hover:bg-pale-blue transition-colors"
+            />
+          </form>
+          <span
+            id="email_error"
+            class="relative -left-[100px] text-light-red italic invisible"
+            >Please provide a valid email address</span
+          >
+        </div>
+        <!-- Dashboard -->
+        <div class="mt-10 mx-auto h-[400px] w-[600px]">
+          <img
+            src="./images/illustration-dashboard.png"
+            alt="dashboard"
+            class=""
+          />
+        </div>
+        <!-- Footer -->
+        <div class="mt-10 text-center">
+          <!-- Icons -->
+          <div class="flex justify-center items-center gap-6">
+            <p class="text-2xl">
+              <i class="fa-brands fa-facebook text-blue"></i>
+            </p>
+            <p class="text-2xl">
+              <i class="fa-brands fa-twitter text-blue"></i>
+            </p>
+            <p class="text-2xl">
+              <i class="fa-brands fa-instagram text-blue"></i>
+            </p>
+          </div>
+          <!-- Copyright -->
+          <div class="mt-4">
+            <p class="text-gray text-sm font-light">
+              &copy; Copyright Ping. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
